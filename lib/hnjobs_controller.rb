@@ -6,7 +6,7 @@ class HnjobsController
 # 3. CLI says hi and provides instructions
 # 4. user inputs list command
 # 5. CLI shows error message that there is no list yet, please scrape first
-# 5. user inputs #scrape(url)
+# 5. user inputs url to scrape
 # 5. CLI scrapes url
 # 6. CLI outputs list
 # 7. user inputs number of job posting
@@ -18,7 +18,18 @@ class HnjobsController
 # 13. user exits
 
   def call
-    puts "Hello World"
+    puts "Hello! Welcome to the Hacker News Job Scraper."
+    puts "I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings, minus the cacophony of replies to each comment"
+    puts "Input URL to scrape:"
+
+  end
+
+  def menu
+    puts "Available Commands:"
+    puts "Enter the number of a job posting to see its details"
+    puts "scrape <url_of_hacker_news_post>   //--> scrapes a new url and outputs another list of job postings"
+    puts "list   //--> list job postings from latest scrape"
+    puts "filter <search terms>    //--> filter job postings by search terms"
   end
 
 end
