@@ -1,3 +1,0 @@
-class HnjobsController
-  # Your code goes here...
-end

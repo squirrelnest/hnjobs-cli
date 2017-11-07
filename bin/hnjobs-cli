@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'hnjobs'
+require_relative '../lib/hnjobs_controller'
 
 HnjobsController.new.call
