@@ -1,5 +1,5 @@
 require "hnjobs/version"
 
-module Hnjobs
+class Hnjobs
   # Your code goes here...
 end
