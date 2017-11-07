@@ -1,15 +1,13 @@
-# Hnjobs
+# hnjobs-cli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hnjobs`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This handy dandy CLI app scrapes Hacker News for job postings. It outputs a list of jobs as well as further details about individual jobs.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'hnjobs'
+gem 'hnjobs-cli'
 ```
 
 And then execute:
@@ -18,11 +16,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install hnjobs
+    $ gem install hnjobs-cli
 
 ## Usage
 
-TODO: Write usage instructions here
+1) Google for the latest Hacker News post on who is hiring. Suggested keywords: "Ask HN: Who is hiring (<month> <year>)"
+
+2) Copy the post URL, which should look something like this: https://news.ycombinator.com/item?id=15601729, except the id will change from post to post.
+
+3) Paste the URL into the command line and press Enter.
+
+4) hnjobs-cli will scrape the page and output a list of jobs. Enter the number of a job to see further details about that job.
 
 ## Development
 
@@ -32,7 +36,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hnjobs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/squirrelnest/hnjobs-cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +44,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Hnjobs project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/hnjobs/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the hnjobs-cli project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/squirrelnest/hnjobs-cli/blob/master/CODE_OF_CONDUCT.md).
