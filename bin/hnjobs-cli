@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/hnjobs_controller'
+# require_relative '../config/environment'
+
 
 HnjobsController.new.call
