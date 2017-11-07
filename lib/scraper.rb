@@ -9,7 +9,7 @@ class Scraper
 
   def initialize(url)
     # Assign nokogiri output to variable
-    @@doc = Nokogiri::HTML(open(url))
+    @doc = Nokogiri::HTML(open(url))
   end
 
   # Create jobs
