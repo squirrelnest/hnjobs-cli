@@ -2,4 +2,4 @@
 
 require 'hnjobs'
 
-Hnjobs.new.call
+HnjobsController.new.call

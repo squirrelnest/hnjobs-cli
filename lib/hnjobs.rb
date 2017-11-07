@@ -1,5 +1,3 @@
-require "hnjobs/version"
-
-class Hnjobs
+class HnjobsController
   # Your code goes here...
 end
