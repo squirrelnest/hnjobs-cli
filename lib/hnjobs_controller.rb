@@ -1,7 +1,3 @@
-require 'open-uri'
-require 'rubygems'
-require 'nokogiri'
-
 class HnjobsController
 
 # User Flow: First-Timer
@@ -27,9 +23,8 @@ class HnjobsController
     if url != 'exit'
       puts 'Scraping...'
       puts ''
-      doc = Nokogiri::HTML(open(url))
-      puts doc.css(".comment").children
-      # jobs = Scraper.new(url)
+      jobs = Scraper.scrape(url)
+      puts jobs
       # jobs
       # jobs = scraper.scrape(input)
       # jobs.each_with_index do |job, i|

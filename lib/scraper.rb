@@ -12,6 +12,11 @@ class Scraper
     @doc = Nokogiri::HTML(open(url))
   end
 
+  def self.scrape(url)
+    @doc = Nokogiri::HTML(open(url))
+    puts @doc.css(".comment").children
+  end
+
   # Create jobs
 
   # Search doc to populate jobs hash
