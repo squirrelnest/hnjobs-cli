@@ -20,13 +20,17 @@ class HnjobsController
   def call
     greeting
     url = gets.to_s.strip
-    jobs = Scraper.new(url)
-    # jobs = scraper.scrape(input)
-    # jobs.each_with_index do |job, i|
-    #   item = Job.new(job)
-    #   puts `#{i}. #{item.firstline}`
-    # end
-    menu
+    if url != 'exit'
+      puts 'Scraping...'
+      jobs = Scraper.new(url)
+      jobs
+      # jobs = scraper.scrape(input)
+      # jobs.each_with_index do |job, i|
+      #   item = Job.new(job)
+      #   puts `#{i}. #{item.firstline}`
+      # end
+      menu
+    end
   end
 
   def greeting
