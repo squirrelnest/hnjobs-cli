@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/hnjobs_controller'
+require_relative '../lib/scraper'
+require_relative '../lib/job'
+
 # require_relative '../config/environment'
 
 

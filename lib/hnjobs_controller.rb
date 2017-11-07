@@ -21,23 +21,23 @@ class HnjobsController
     puts "Hello! Welcome to the Hacker News Job Scraper."
     puts "I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings, minus the cacophony of replies to each comment"
     puts "Input URL to scrape:"
-    input = gets.to_s.strip
-    jobs = Scraper.new(input)
+    url = gets.to_s.strip
+    jobs = Scraper.new(url)
     # jobs = scraper.scrape(input)
-    # jobs.each_with_index.map do |job, i|
+    # jobs.each_with_index do |job, i|
     #   item = Job.new(job)
     #   puts `#{i}. #{item.firstline}`
     # end
-    puts jobs
+    jobs
     menu
   end
 
   def menu
     puts "Available Commands:"
     puts "Enter the number of a job posting to see its details"
-    puts "scrape <url_of_hacker_news_post>   //--> scrapes a new url and outputs another list of job postings"
-    puts "list   //--> list job postings from latest scrape"
-    puts "filter <search terms>    //--> filter job postings by search terms"
+    puts "scrape <url_of_hacker_news_post>    //--> scrapes a new url and outputs another list of job postings"
+    puts "list                                //--> list job postings from latest scrape"
+    puts "filter <search terms>               //--> filter job postings by search terms"
   end
 
 end

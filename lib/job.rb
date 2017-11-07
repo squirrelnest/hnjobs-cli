@@ -3,8 +3,8 @@ class Job
   attr_reader :company, :description
 
   def initialize(options = {})
-    @company = 
-    @description =
+    @company = nil
+    @description = nil
   end
 
   def firstline

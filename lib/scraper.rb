@@ -1,9 +1,15 @@
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
 class Scraper
 
   attr_accessor :doc
 
   def initialize(url)
-    @doc = Nokogiri::HTML(open(url)) # Assign nokogiri output to variable
+    # Assign nokogiri output to variable
+    @@doc = Nokogiri::HTML(open(url))
   end
 
   # Create jobs
