@@ -1,6 +1,8 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+require 'open-uri'
+require 'nokogiri'
 
-# Specify your gem's dependencies in hnjobs.gemspec
-gemspec
+group :development do
+  gem 'pry'
+end
