@@ -18,9 +18,7 @@ class HnjobsController
 # 13. user exits
 
   def call
-    puts "Hello! Welcome to the Hacker News Job Scraper."
-    puts "I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings, minus the cacophony of replies to each comment"
-    puts "Input URL to scrape:"
+    greeting
     url = gets.to_s.strip
     jobs = Scraper.new(url)
     # jobs = scraper.scrape(input)
@@ -28,8 +26,13 @@ class HnjobsController
     #   item = Job.new(job)
     #   puts `#{i}. #{item.firstline}`
     # end
-    jobs
     menu
+  end
+
+  def greeting
+    puts "Hello! Welcome to the Hacker News Job Scraper."
+    puts "I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings, minus the cacophony of replies to each comment"
+    puts "Input URL to scrape:"
   end
 
   def menu
