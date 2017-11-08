@@ -14,6 +14,7 @@ class HnjobsController
 # 11. user scrapes new page via #scrape
 # 12. user exits
 
+  # User interface
   def call
     puts greeting
     scrape
@@ -45,6 +46,7 @@ class HnjobsController
     end
   end
 
+  # List jobs with numbers for reference
   def list
     puts "\n\n#{Job.count} job postings found\n\n"
     Job.list.map do |job|
@@ -53,6 +55,7 @@ class HnjobsController
     puts "\n\nEnter the number of a job posting to see more info."
   end
 
+  # Scrape page and create jobs
   def scrape
     Job.reset
     puts 'Enter a URL to scrape (or press enter for default):'
@@ -66,6 +69,7 @@ class HnjobsController
     puts list
   end
 
+  # Filter jobs
   def filter
     puts 'Enter keyword:'
     keyword = gets.strip
