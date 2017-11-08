@@ -16,4 +16,8 @@ class Job
     @@all.select { |job| job.id == id - 1 }.first
   end
 
+  def self.list
+    @@all
+  end
+
 end
