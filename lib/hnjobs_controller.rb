@@ -4,18 +4,15 @@ class HnjobsController
 # 1. user installs gem
 # 2. user starts app
 # 3. CLI says hi and provides instructions
-# 4. user inputs list command
-# 5. CLI shows error message that there is no list yet, please scrape first
-# 6. user inputs url to scrape
-# 7. CLI scrapes url
-# 8. CLI outputs list
-# 9. user inputs number of job posting
-# 10. CLI outputs further details about job posting
-# 11. user returns to list via #list
-# 12. user filters list by #search
-# 13. user inputs number of job posting
-# 14. CLI outputs further details about job posting
-# 15. user exits
+# 4. user inputs url to scrape or uses default url
+# 5. CLI scrapes url
+# 6. CLI outputs list
+# 7. user inputs number of job posting
+# 8. CLI outputs further details about job posting
+# 9. user returns to list via #list
+# 10. user filters list by #filter
+# 11. user scrapes new page via #scrape
+# 12. user exits
 
   def call
     puts greeting
