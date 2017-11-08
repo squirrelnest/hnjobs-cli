@@ -16,8 +16,13 @@ class Scraper
     @doc = Nokogiri::HTML(open(url))
     puts "#{@doc.css(".comment").length} job postings found"
     puts ""
+    # comments = @doc.search('.ind id[text()="5678"] ~ *')
     @doc.css(".comment").map do |comment|
-      puts comment.css(".c00").first.text unless comment.css(".c00").first === nil
+      firstline = comment.css(":not(p)").first.text unless
+        comment.css(".c00").first === nil ||
+        !comment.css(".c00").first.text.include?('|')
+      job = Job.new(firstline)
+      puts job.firstline unless job.firstline === ""
     end
   end
 

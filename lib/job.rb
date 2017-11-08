@@ -1,13 +1,14 @@
 class Job
 
-  attr_reader :company, :description
+  attr_reader :company, :description, :firstline
 
-  def initialize(options = {})
+  def initialize(firstline)
     @company = nil
+    @firstline = firstline
     @description = nil
   end
 
-  def firstline
-  end
+  # def firstline
+  # end
 
 end

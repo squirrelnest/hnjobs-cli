@@ -23,10 +23,8 @@ class HnjobsController
     if url != 'exit'
       puts 'Scraping...'
       puts ''
-      jobs = Scraper.scrape(url)
-      puts jobs
-      # jobs
-      # jobs = scraper.scrape(input)
+      puts Scraper.scrape(url)
+      # jobs = Scraper.scrape(url)
       # jobs.each_with_index do |job, i|
       #   item = Job.new(job)
       #   puts `#{i}. #{item.firstline}`
