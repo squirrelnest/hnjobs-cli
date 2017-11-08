@@ -20,4 +20,12 @@ class Job
     @@all
   end
 
+  def self.count
+    @@all.count
+  end
+
+  def self.reset
+    @@all = []
+  end
+
 end

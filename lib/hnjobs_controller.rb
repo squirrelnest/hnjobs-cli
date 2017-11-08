@@ -19,14 +19,8 @@ class HnjobsController
 
   def call
     puts greeting
-    input = 'https://news.ycombinator.com/item?id=15601729'
-    puts "Scraping...\n\n"
-    jobs_data = Scraper.scrape(input)
-    puts "#{jobs_data.count} job postings found"
-    jobs_data.each_with_index do |job_data, i|
-      job = Job.new(job_data.merge(id: i+1))
-      puts "#{job.id}. #{job.firstline}"
-    end
+    scrape
+    input = ''
     while input != 'exit'
       input = gets.strip
       case input
@@ -36,13 +30,14 @@ class HnjobsController
           puts "\n\n" + job.description + "\n\n"
           puts menu
         else
-          puts "Out of range. Please input a number between 1 and #{jobs_data.count}"
+          puts "Out of range. Please input a number between 1 and #{Job.count}"
         end
       when 'list'
-        puts list
-        puts "\n\nEnter the number of a job posting to see more info."
+        list
       when 'exit'
         puts "\n\nGoodbye!\n\n"
+      when 'scrape'
+        scrape
       else
         puts 'Unknown command'
         puts menu
@@ -51,9 +46,24 @@ class HnjobsController
   end
 
   def list
+    puts "\n\n#{Job.count} job postings found\n\n"
     Job.list.map do |job|
-      "#{job.id}. #{job.firstline}"
+      puts "#{job.id}. #{job.firstline}"
     end
+    puts "\n\nEnter the number of a job posting to see more info."
+  end
+
+  def scrape
+    Job.reset
+    puts 'Enter a URL to scrape (or press enter for default):'
+    url = gets.strip
+    url = 'https://news.ycombinator.com/item?id=15601729' if url == ''
+    puts "Scraping...\n\n"
+    jobs_data = Scraper.scrape(url)
+    jobs_data.each_with_index do |job_data, i|
+      job = Job.new(job_data.merge(id: i+1))
+    end
+    puts list
   end
 
   def greeting
@@ -68,9 +78,9 @@ class HnjobsController
     <<~EOL
       Available Commands:
       Enter the number of a job posting to see its details
-      scrape <url_of_hacker_news_post>    //--> scrapes a new url and outputs another list of job postings
+      scrape                              //--> scrapes a new url and outputs another list of job postings
       list                                //--> list job postings from latest scrape
-      filter <search terms>               //--> filter job postings by search terms
+      filter                              //--> filter job postings by search terms
       exit                                //--> exit the program
     EOL
   end
