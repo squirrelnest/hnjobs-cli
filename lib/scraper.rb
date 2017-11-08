@@ -14,7 +14,11 @@ class Scraper
 
   def self.scrape(url)
     @doc = Nokogiri::HTML(open(url))
-    puts @doc.css(".comment").children
+    puts "#{@doc.css(".comment").length} job postings found"
+    puts ""
+    @doc.css(".comment").map do |comment|
+      puts comment.css(".c00").first.text unless comment.css(".c00").first === nil
+    end
   end
 
   # Create jobs
