@@ -26,8 +26,8 @@ class HnjobsController
       jobs = Scraper.scrape(url)
       puts "#{jobs.count} job postings found"
       jobs.each_with_index do |job_data, i|
-        job = Job.new(job_data)
-        puts "#{i+1}. #{job.firstline}"
+        job = Job.new(job_data.merge(id: i+1))
+        puts "#{job.id}. #{job.firstline}"
       end
       puts menu
     end

@@ -9,7 +9,4 @@ class Job
     @description = options[:description]
   end
 
-  # def firstline
-  # end
-
 end
