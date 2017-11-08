@@ -18,33 +18,37 @@ class HnjobsController
 # 13. user exits
 
   def call
-    greeting
-    url = gets.to_s.strip
+    puts greeting
+    # url = gets.to_s.strip
+    url = 'https://news.ycombinator.com/item?id=15601729'
     if url != 'exit'
-      puts 'Scraping...'
-      puts ''
-      puts Scraper.scrape(url)
-      # jobs = Scraper.scrape(url)
-      # jobs.each_with_index do |job, i|
-      #   item = Job.new(job)
-      #   puts `#{i}. #{item.firstline}`
-      # end
-      menu
+      puts "Scraping...\n\n"
+      jobs = Scraper.scrape(url)
+      puts "#{jobs.count} job postings found"
+      jobs.each_with_index do |job_data, i|
+        job = Job.new(job_data)
+        puts "#{i+1}. #{job.firstline}"
+      end
+      puts menu
     end
   end
 
   def greeting
-    puts "Hello! Welcome to the Hacker News Job Scraper."
-    puts "I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings, minus the cacophony of replies to each comment"
-    puts "Input URL to scrape:"
+    <<~EOL
+      Hello! Welcome to the Hacker News Job Scraper.
+      I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings.
+      Input URL to scrape:
+    EOL
   end
 
   def menu
-    puts "Available Commands:"
-    puts "Enter the number of a job posting to see its details"
-    puts "scrape <url_of_hacker_news_post>    //--> scrapes a new url and outputs another list of job postings"
-    puts "list                                //--> list job postings from latest scrape"
-    puts "filter <search terms>               //--> filter job postings by search terms"
+    <<~EOL
+      Available Commands:
+      Enter the number of a job posting to see its details
+      scrape <url_of_hacker_news_post>    //--> scrapes a new url and outputs another list of job postings
+      list                                //--> list job postings from latest scrape
+      filter <search terms>               //--> filter job postings by search terms
+    EOL
   end
 
 end

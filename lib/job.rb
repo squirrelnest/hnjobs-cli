@@ -2,11 +2,11 @@ class Job
 
   attr_reader :company, :description, :firstline, :id
 
-  def initialize(id, company, firstline, description)
-    @id = id
-    @company = company
-    @firstline = firstline
-    @description = description
+  def initialize(options = {})
+    @id = options[:id]
+    @company = options[:company]
+    @firstline = options[:firstline]
+    @description = options[:description]
   end
 
   # def firstline
