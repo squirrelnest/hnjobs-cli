@@ -19,17 +19,19 @@ class HnjobsController
 
   def call
     puts greeting
-    # url = gets.to_s.strip
+    # url = gets.strip
     url = 'https://news.ycombinator.com/item?id=15601729'
     if url != 'exit'
       puts "Scraping...\n\n"
-      jobs = Scraper.scrape(url)
-      puts "#{jobs.count} job postings found"
-      jobs.each_with_index do |job_data, i|
+      jobs_data = Scraper.scrape(url)
+      puts "#{jobs_data.count} job postings found"
+      jobs_data.each_with_index do |job_data, i|
         job = Job.new(job_data.merge(id: i+1))
         puts "#{job.id}. #{job.firstline}"
       end
       puts menu
+      input = gets.strip
+      puts Job.find_by_id(input.to_i).description
     end
   end
 
