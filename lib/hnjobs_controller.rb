@@ -38,6 +38,9 @@ class HnjobsController
         puts "\n\nGoodbye!\n\n"
       when 'scrape'
         scrape
+      when 'filter'
+        filter
+        puts "\n\nEnter the number of a job posting to see more info."
       else
         puts 'Unknown command'
         puts menu
@@ -64,6 +67,14 @@ class HnjobsController
       job = Job.new(job_data.merge(id: i+1))
     end
     puts list
+  end
+
+  def filter
+    puts 'Enter keyword:'
+    keyword = gets.strip
+    Job.filter(keyword).each do |job|
+      puts "#{job.id} #{job.firstline}"
+    end
   end
 
   def greeting

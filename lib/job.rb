@@ -16,6 +16,10 @@ class Job
     @@all.select { |job| job.id == id }.first
   end
 
+  def self.filter(keyword)
+    @@all.select { |job| job.description.include?(keyword) }
+  end
+
   def self.list
     @@all
   end
