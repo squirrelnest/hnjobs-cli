@@ -13,7 +13,7 @@ class Job
   end
 
   def self.find_by_id(id)
-    @@all.select { |job| job.id == id - 1 }.first
+    @@all.select { |job| job.id == id }.first
   end
 
   def self.list

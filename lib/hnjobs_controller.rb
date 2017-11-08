@@ -19,7 +19,6 @@ class HnjobsController
 
   def call
     puts greeting
-    # url = gets.strip
     input = 'https://news.ycombinator.com/item?id=15601729'
     puts "Scraping...\n\n"
     jobs_data = Scraper.scrape(input)
@@ -29,24 +28,33 @@ class HnjobsController
       puts "#{job.id}. #{job.firstline}"
     end
     while input != 'exit'
-      puts menu
       input = gets.strip
-      if input != 0 && input != 'list'
-        puts "\n\n" + Job.find_by_id(input.to_i).description + "\n\n"
-      elsif input === 'list'
-        Job.list.each do |job|
-          puts "#{job.id}. #{job.firstline}"
+      case input
+      when -> (input) { input.to_i != 0 } # this proc lets you make comparisons inside case statements
+        job = Job.find_by_id(input.to_i)
+        if job
+          puts "\n\n" + job.description + "\n\n"
+          puts menu
+        else
+          puts "Out of range. Please input a number between 1 and #{jobs_data.count}"
         end
+      when 'list'
+        puts list
+        puts "\n\nEnter the number of a job posting to see more info."
+      when 'exit'
+        puts "\n\nGoodbye!\n\n"
+      else
+        puts 'Unknown command'
+        puts menu
       end
     end
   end
 
-  # def list
-  #   jobs_data.each_with_index do |job_data, i|
-  #     job = Job.new(job_data.merge(id: i+1))
-  #     puts "#{job.id}. #{job.firstline}"
-  #   end
-  # end
+  def list
+    Job.list.map do |job|
+      "#{job.id}. #{job.firstline}"
+    end
+  end
 
   def greeting
     <<~EOL
@@ -63,6 +71,7 @@ class HnjobsController
       scrape <url_of_hacker_news_post>    //--> scrapes a new url and outputs another list of job postings
       list                                //--> list job postings from latest scrape
       filter <search terms>               //--> filter job postings by search terms
+      exit                                //--> exit the program
     EOL
   end
 
