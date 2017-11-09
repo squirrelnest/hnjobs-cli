@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "hnjobs/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "hnjobs-cli"
+  spec.name          = "hnjobs_cli"
   spec.version       = Hnjobs::VERSION
   spec.authors       = ["purple squirrel"]
   spec.email         = ["mikkanthrope@gmail.com"]
 
   spec.summary       = %q{Extracts job postings from Ycombinator Hacker News}
   spec.description   = %q{CLI app for checking monthly job postings on Ask HN: Who Is Hiring}
-  spec.homepage      = "https://github.com/squirrelnest/hnjobs-cli"
+  spec.homepage      = "https://github.com/squirrelnest/hnjobs_cli"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -24,9 +24,9 @@ Gem::Specification.new do |spec|
   #     "public gem pushes."
   # end
 
-  spec.files         = ["lib/hnjobs_controller.rb", "lib/job.rb", "lib/scraper.rb", "bin/hnjobs-cli"]
-  spec.bindir        = "exe"
-  spec.executables   = ["hnjobs-cli"]
+  spec.files         = Dir['lib/**/*.rb']
+  spec.bindir        = "bin"
+  spec.executables   = ["hnjobs_cli"]
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.16.a"

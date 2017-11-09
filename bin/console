@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "hnjobs-cli"
+require "hnjobs_cli"
 
 require "pry"
 Pry.start
