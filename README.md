@@ -7,7 +7,7 @@ This handy dandy CLI app scrapes Hacker News for job postings. It outputs a list
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'hnjobs-cli'
+gem 'hnjobs_cli'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install hnjobs-cli
+    $ gem install hnjobs_cli
 
 ## Usage
 
