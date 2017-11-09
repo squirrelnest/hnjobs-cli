@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'nokogiri'
+
 class Scraper
 
   # Assign nokogiri output to variable & search doc to populate jobs hash

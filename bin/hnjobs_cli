@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
-require_relative '../config/environment'
+require 'require_all'
+
+require_all 'lib'
+
+# require_relative '../config/environment'
 
 HNjobsCLI.new.call

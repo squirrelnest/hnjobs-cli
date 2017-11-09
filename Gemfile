@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-require 'open-uri'
-require 'nokogiri'
+gem 'nokogiri'
+gem 'require_all'
 
 group :development do
   gem 'pry'
+  gem 'coderay'
 end
