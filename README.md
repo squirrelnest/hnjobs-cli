@@ -24,9 +24,11 @@ Or install it yourself as:
 
 2) Copy the post URL, which should look something like this: https://news.ycombinator.com/item?id=15601729, except the id will change from post to post.
 
-3) Paste the URL into the command line and press Enter.
+3) Run `hnjobs_cli`
 
-4) hnjobs-cli will scrape the page and output a list of jobs. Enter the number of a job to see further details about that job.
+4) Paste the URL you copied into the command line and press Enter.
+
+5) hnjobs-cli will scrape the page and output a list of jobs. Enter the number of a job to see further details about that job.
 
 ## Development
 
@@ -37,6 +39,14 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/squirrelnest/hnjobs-cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Future features
+
+- colors!
+- parsing salary info
+- support for multiple filters
+- case-insensitive matching
+- tests
 
 ## License
 
