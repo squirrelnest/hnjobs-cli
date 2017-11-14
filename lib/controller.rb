@@ -18,7 +18,7 @@ class HNjobsCLI
 
   # Initialize program with greeting and starts interface
   def call
-    puts greeting
+    puts yellow(greeting)
     interface
   end
 
@@ -30,7 +30,7 @@ class HNjobsCLI
       input = gets.strip
       case input
         when -> (input) { input.to_i != 0 } # this proc lets you make comparisons inside case statements
-          details
+          details(input)
         when 'list'
           list
         when 'scrape'
@@ -40,8 +40,8 @@ class HNjobsCLI
         when 'exit'
           puts "\n\nGoodbye!\n\n"
         else
-          puts 'Unknown command'
-          puts menu
+          puts red('Unknown command')
+          puts "\n" + green(menu)
       end
     end
   end
@@ -52,7 +52,7 @@ class HNjobsCLI
     Job.list.map do |job|
       puts "#{job.id}. #{job.firstline}"
     end
-    menu
+    puts "\n" + green(menu)
   end
 
   # Scrape page and create jobs
@@ -76,15 +76,15 @@ class HNjobsCLI
     Job.filter(keyword).each do |job|
       puts "#{job.id} #{job.firstline}"
     end
-    menu
+    puts "\n" + green(menu)
   end
 
   # show details about a specific job posting
-  def details
+  def details(input)
     job = Job.find_by_id(input.to_i)
     if job
       puts "\n\n" + job.description + "\n\n"
-      puts menu
+      puts "\n" + green(menu)
     else
       puts "Out of range. Please input a number between 1 and #{Job.count}"
     end
@@ -100,7 +100,7 @@ class HNjobsCLI
 
   def menu
     <<~EOL
-      ${yellow}Available Commands:${normal}
+      Available Commands:
       scrape                              //--> scrapes a new url and outputs another list of job postings
       list                                //--> list job postings from latest scrape
       filter                              //--> filter job postings by search terms
@@ -113,9 +113,6 @@ class HNjobsCLI
 
   def red(text) "\e[31m#{text}\e[0m" end
   def green(text) "\e[32m#{text}\e[0m" end
-  def brown(text) "\e[33m#{text}\e[0m" end
-
-  normal = $(tput sgr0)
-  yellow = $(tput setaf 3)
+  def yellow(text) "\e[33m#{text}\e[0m" end
 
 end
