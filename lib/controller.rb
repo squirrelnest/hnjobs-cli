@@ -1,3 +1,5 @@
+require 'pry'
+
 class HNjobsCLI
 
 # User Flow: First-Timer
@@ -72,7 +74,7 @@ class HNjobsCLI
   # Filter jobs
   def filter
     puts 'Enter keyword:'
-    keyword = gets.strip
+    keyword = gets.downcase.strip
     Job.filter(keyword).each do |job|
       puts "#{job.id} #{job.firstline}"
     end

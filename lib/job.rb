@@ -17,7 +17,7 @@ class Job
   end
 
   def self.filter(keyword)
-    @@all.select { |job| job.description.include?(keyword) }
+    @@all.select { |job| job.description.downcase.include?(keyword) }
   end
 
   def self.list
