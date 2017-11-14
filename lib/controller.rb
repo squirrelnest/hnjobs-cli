@@ -16,34 +16,32 @@ class HNjobsCLI
 # 11. user scrapes new page via #scrape
 # 12. user exits
 
-  # User interface
+  # Initialize program with greeting and starts interface
   def call
     puts greeting
+    interface
+  end
+
+  # Interface with user
+  def interface
     scrape
     input = ''
     while input != 'exit'
       input = gets.strip
       case input
-      when -> (input) { input.to_i != 0 } # this proc lets you make comparisons inside case statements
-        job = Job.find_by_id(input.to_i)
-        if job
-          puts "\n\n" + job.description + "\n\n"
-          puts menu
+        when -> (input) { input.to_i != 0 } # this proc lets you make comparisons inside case statements
+          details
+        when 'list'
+          list
+        when 'scrape'
+          scrape
+        when 'filter'
+          filter
+        when 'exit'
+          puts "\n\nGoodbye!\n\n"
         else
-          puts "Out of range. Please input a number between 1 and #{Job.count}"
-        end
-      when 'list'
-        list
-      when 'exit'
-        puts "\n\nGoodbye!\n\n"
-      when 'scrape'
-        scrape
-      when 'filter'
-        filter
-        puts "\n\nEnter the number of a job posting to see more info."
-      else
-        puts 'Unknown command'
-        puts menu
+          puts 'Unknown command'
+          puts menu
       end
     end
   end
@@ -54,7 +52,7 @@ class HNjobsCLI
     Job.list.map do |job|
       puts "#{job.id}. #{job.firstline}"
     end
-    puts "\n\nEnter the number of a job posting to see more info."
+    menu
   end
 
   # Scrape page and create jobs
@@ -78,6 +76,18 @@ class HNjobsCLI
     Job.filter(keyword).each do |job|
       puts "#{job.id} #{job.firstline}"
     end
+    menu
+  end
+
+  # show details about a specific job posting
+  def details
+    job = Job.find_by_id(input.to_i)
+    if job
+      puts "\n\n" + job.description + "\n\n"
+      puts menu
+    else
+      puts "Out of range. Please input a number between 1 and #{Job.count}"
+    end
   end
 
   def greeting
@@ -90,13 +100,22 @@ class HNjobsCLI
 
   def menu
     <<~EOL
-      Available Commands:
-      Enter the number of a job posting to see its details
+      ${yellow}Available Commands:${normal}
       scrape                              //--> scrapes a new url and outputs another list of job postings
       list                                //--> list job postings from latest scrape
       filter                              //--> filter job postings by search terms
       exit                                //--> exit the program
+      Or enter the number of a job posting to see its details:
     EOL
   end
+
+  # coloration
+
+  def red(text) "\e[31m#{text}\e[0m" end
+  def green(text) "\e[32m#{text}\e[0m" end
+  def brown(text) "\e[33m#{text}\e[0m" end
+
+  normal = $(tput sgr0)
+  yellow = $(tput setaf 3)
 
 end
