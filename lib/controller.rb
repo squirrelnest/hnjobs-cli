@@ -83,7 +83,7 @@ class HNjobsCLI
   def details(input)
     job = Job.find_by_id(input.to_i)
     if job
-      puts "\n\n" + job.description + "\n\n"
+      puts "\n\n" + job.description
       puts menu
     else
       puts "Out of range. Please input a number between 1 and #{Job.count}"
