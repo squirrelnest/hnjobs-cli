@@ -41,7 +41,7 @@ class HNjobsCLI
           puts "\n\nGoodbye!\n\n"
         else
           puts red('Unknown command')
-          puts "\n" + green(menu)
+          puts menu
       end
     end
   end
@@ -52,7 +52,7 @@ class HNjobsCLI
     Job.list.map do |job|
       puts "#{job.id}. #{job.firstline}"
     end
-    puts "\n" + green(menu)
+    puts menu
   end
 
   # Scrape page and create jobs
@@ -76,7 +76,7 @@ class HNjobsCLI
     Job.filter(keyword).each do |job|
       puts "#{job.id} #{job.firstline}"
     end
-    puts "\n" + green(menu)
+    puts menu
   end
 
   # show details about a specific job posting
@@ -84,7 +84,7 @@ class HNjobsCLI
     job = Job.find_by_id(input.to_i)
     if job
       puts "\n\n" + job.description + "\n\n"
-      puts "\n" + green(menu)
+      puts menu
     else
       puts "Out of range. Please input a number between 1 and #{Job.count}"
     end
@@ -94,12 +94,12 @@ class HNjobsCLI
     <<~EOL
       Hello! Welcome to the Hacker News Job Scraper.
       I can distill an 'Ask HN: Who is hiring?' post down to its fine job postings.
-      Input URL to scrape:
     EOL
   end
 
   def menu
-    <<~EOL
+    green(<<~EOL
+
       Available Commands:
       scrape                              //--> scrapes a new url and outputs another list of job postings
       list                                //--> list job postings from latest scrape
@@ -107,6 +107,7 @@ class HNjobsCLI
       exit                                //--> exit the program
       Or enter the number of a job posting to see its details:
     EOL
+    )
   end
 
   # coloration
