@@ -47,10 +47,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/squirr
 
 ## Future features
 
-- colors!
 - parsing salary info
 - support for multiple filters
-- case-insensitive matching
+- auto-lookup of latest HN jobs post url
 - tests
 
 ## License
