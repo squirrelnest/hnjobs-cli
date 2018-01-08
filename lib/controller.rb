@@ -60,7 +60,7 @@ class HNjobsCLI
     Job.reset
     puts 'Enter a URL to scrape (or press enter for default):'
     url = gets.strip
-    url = 'https://news.ycombinator.com/item?id=15601729' if url == ''
+    url = 'https://news.ycombinator.com/item?id=16052538' if url == ''
     puts "Scraping...\n\n"
     jobs_data = Scraper.scrape(url)
     jobs_data.each_with_index do |job_data, i|
